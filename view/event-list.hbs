@@ -1,0 +1,39 @@
+<section id="events-live" class="events-grid">
+    <ul class="thumbnails">
+{{#iter events}}
+        <li class="span3 catalog-event event-counter-0">
+            <a href="http://www.totsy.com/sales/smet-kids.html" class="thumbnail" data-index="{{idx}}">
+                <hgroup>
+                    <h5>{{name}}</h5>
+                </hgroup>
+                <div class="more">
+                    <div class="maxDiscount"><em>up to <span><strong>{{max_discount_pct}}%</strong> off</span></em></div>
+                    <div class="more-content">
+                        <section class="labels container">
+                            <h6>Categories:</h6>
+                            <ul>
+{{#each department}}
+                                <li>{{this}}</li>
+{{/each}}
+                            </ul>
+                        </section>
+                        <section class="labels container">
+                            <h6>Ages:</h6>
+                            <ul>
+{{#each age}}
+                                <li>{{this}}</li>
+{{/each}}
+                            </ul>
+                        </section>
+                        <p id="time1-0"><span>Ends in</span> 2 <span class="cd-time">Days</span> 15<span class="cd-time">:</span>37<span class="cd-time">:</span>18<span class="cd-time"></span></p>
+                        <span class="btn btn-primary">Shop Now!</span>
+                    </div>
+                </div>
+                <span class="event-link">
+                    <img src="{{image.small}}" width="228" height="263" alt="Smet kids">
+                </span>
+            </a>
+        </li>
+{{/iter}}
+    </ul>
+</section>

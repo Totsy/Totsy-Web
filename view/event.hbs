@@ -1,0 +1,46 @@
+<section class="event-landing event-current">
+    <header class="page-header">
+        <h2>
+            <a href="/event/">Today's Sales</a>
+{{#if event}}
+            <i> / </i>{{event.name}}
+{{/if}}
+        </h2>
+    </header>
+{{#if event}}
+    <div class="well intro clearfix">
+        <div class="span2 alpha omega">
+            <div class="category-image"><img src="{{event.image.default}}" alt="{{event.name}}" title="{{event.name}}"></div>
+        </div>
+        <div class="span9 intro-content">
+            <h3>{{event.name}}</h3>
+            <p>{{event.description}}</p>
+        </div>
+    </div><!-- /.well -->
+{{/if}}
+    <div class="row">
+        <div class="span12 event-products">
+            <ul class="thumbnails event_prod_grid">
+{{#each products}}
+                <li class="span4 item">
+                    <div class="thumbnail">
+                        <a href="{{resourcelink rel="self"}}" title="{{name}}" class="product-image"><img src="{{image.[0]}}" width="308" height="310" alt="{{name}}"></a>
+                        <div class="caption">
+                            <h5>{{name}}</h5>
+                            <div class="price-wrap">
+                                <div class="price-box">
+                                    <p class="old-price">
+                                        <span class="price" id="old-price-665730">${{priceformat price.orig}}</span>
+                                    </p>
+                                    <span class="price special-price big_price" id="product-price-665730">${{priceformat price.price}}</span>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </li>
+{{/each}}
+            </ul>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</section>
