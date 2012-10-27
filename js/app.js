@@ -1,116 +1,115 @@
 /**
  * app.js
- * @author Tharsan Bhuvanendran <tbhuvanendran@totsy.com>
  *
- * The Totsy core application. This creates an object for internal application
- * functions, and then initializes the application.
- * This process includes configuring AJAX requests, setting up the router and
- * navigation processes.
+ * The core application object.
+ *
+ * @author Tharsan Bhuvanendran <tbhuvanendran@totsy.com>
+ * @package app
+ * @copyright Totsy Inc, 2012
  */
 
-var Totsy = {};
-
-
-/**
- * Totsy.App
- * core application object
- */
-
-Totsy.App = {
-    baseUrl: 'http://api-staging.totsy.com',
-    router: null,
-    templates: {},
-
-    init: function() {
-        $.ajaxSetup({
-            headers: {
-                Authorization: 'Basic dGhhcnNhbjp0aGFyc2FuMTIz'
+define(function() {
+    var templates = {},
+        getTemplate = function(templateName) {
+            if (!(templateName in templates)) {
+                $.ajax({
+                    url: '/view/' + templateName + '.hbs',
+                    async: false,
+                    success: function(data) {
+                        templates[templateName] = Handlebars.compile(data);
+                    }
+                });
             }
-        });
 
-        var AppRouter = Backbone.Router.extend({
-            routes: {
-                "": "eventList",
-                "event": "eventList"
+            return templates[templateName];
+        };
+
+    /**
+     * Setup Handlebars helpers.
+     */
+
+    Handlebars.registerHelper('resourcelink', function(options) {
+        for (i = 0; i < this.links.length; i++) {
+            if (options.hash.rel == this.links[i].rel) {
+                return this.links[i].href;
+            }
+        }
+    });
+
+    Handlebars.registerHelper('iter', function(context, options) {
+        var fn = options.fn, inverse = options.inverse;
+        var ret = "";
+
+        if(context && context.length > 0) {
+            for(var i=0, j=context.length; i<j; i++) {
+                ret = ret + fn(_.extend({}, context[i], { idx: i }));
+            }
+        } else {
+            ret = inverse(this);
+        }
+
+        return ret;
+    });
+
+    Handlebars.registerHelper('priceformat', function(price) {
+        return parseInt(price).toFixed(2);
+    });
+
+    return {
+        /**
+         * The API base URL.
+         *
+         * @var string
+         */
+        apiBaseUrl: 'http://api-staging.totsy.com',
+
+        /**
+         * The application's base model, that defines common functions/properties
+         * required in all application models.
+         *
+         * @var Backbone.Model
+         */
+        Model: Backbone.Model.extend({
+            resourceUrl: function(rel) {
+                var links = this.get('links');
+                for (i = 0; i < links.length; i++) {
+                    if (rel == links[i].rel) {
+                        return links[i].href;
+                    }
+                }
+            }
+        }),
+
+        /**
+         * The application's base view, that defines common functions/properties
+         * required in all application views.
+         *
+         * @var Backbone.View
+         */
+        View: Backbone.View.extend({
+            templateName: '',
+            data: null,
+            el: document.getElementById('mainContent'),
+            render: function() {
+                if (this.data && this.templateName) {
+                    var tmpl = getTemplate(this.templateName);
+                    this.el.innerHTML = tmpl(this.getContext());
+                }
             },
-            initialize: function() {
-                this.route(/^sales\/.*\.html$/, "productList");
-            },
-            eventList: Totsy.App.Catalog.eventList,
-            productList: Totsy.App.Catalog.productList
-        });
+            getContext: function() {
+                return {};
+            }
+        }),
 
-        Totsy.App.router = new AppRouter;
-        Backbone.history.start({pushState: true});
-    },
-
-    renderView: function(templateName, context) {
-        // load, compile, and save the template if it hasn't been cached already
-        if (!(templateName in Totsy.App.templates)) {
-            $.ajax({
-                url: '/view/' + templateName + '.hbs',
-                async: false,
-                success: function(data) {
-                    Totsy.App.templates[templateName] = Handlebars.compile(data);
+        /**
+         * Intialize the application.
+         */
+        init: function() {
+            $.ajaxSetup({
+                headers: {
+                    Authorization: 'Basic dGhhcnNhbjp0aGFyc2FuMTIz'
                 }
             });
         }
-
-        return Totsy.App.templates[templateName](context);
-    }
-};
-
-
-/**
- * Totsy.Model
- * base application model, subclass of the Backbone model.
- */
-
-Totsy.Model = Backbone.Model.extend({
-    resourceUrl: function(rel) {
-        var links = this.get('links');
-        for (i = 0; i < links.length; i++) {
-            if (rel == links[i].rel) {
-                return links[i].href;
-            }
-        }
     }
 });
-
-
-/**
- * Handlebars template helpers
- */
-
-Handlebars.registerHelper('resourcelink', function(options) {
-    for (i = 0; i < this.links.length; i++) {
-        if (options.hash.rel == this.links[i].rel) {
-            return this.links[i].href;
-        }
-    }
-});
-
-Handlebars.registerHelper('iter', function(context, options) {
-    var fn = options.fn, inverse = options.inverse;
-    var ret = "";
-
-    if(context && context.length > 0) {
-        for(var i=0, j=context.length; i<j; i++) {
-            ret = ret + fn(_.extend({}, context[i], { idx: i }));
-        }
-    } else {
-        ret = inverse(this);
-    }
-
-    return ret;
-});
-
-Handlebars.registerHelper('priceformat', function(price) {
-    return parseInt(price).toFixed(2);
-});
-
-/**
- * Initialize and run application
- */
-
-$(Totsy.App.init);
