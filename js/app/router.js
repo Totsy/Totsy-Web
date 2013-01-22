@@ -15,7 +15,8 @@ define(['app/route/catalog'], function(catalog) {
             "event": "eventList"
         },
         initialize: function() {
-            this.route(/^sales\/.*\.html$/, 'productList');
+            this.route(/^event\/\d+$/, 'eventView');
+            this.route(/^product\/\d+$/, 'productView');
         }
     });
 
@@ -23,7 +24,7 @@ define(['app/route/catalog'], function(catalog) {
         init: function() {
             window.router = new AppRouter();
             router.on('route:eventList', catalog.eventList);
-            router.on('route:productList', catalog.productList);
+            router.on('route:eventView', catalog.eventView);
             router.on('route:productView', catalog.productView);
 
             Backbone.history.start({pushState: true});

@@ -1,0 +1,10 @@
+<ul class="events live">
+{{#each events}}
+    <li>
+        <a href="{{resourcelink rel="self" extract="uri"}}" class="thumbnail">
+            <img src="{{image.thumbnail}}" width="78" border="0" alt="{{name}}" />
+            <span class="name">{{name}}</span>
+        </a>
+    </li>
+{{/each}}
+</ul>

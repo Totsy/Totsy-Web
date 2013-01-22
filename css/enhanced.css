@@ -1,0 +1,224 @@
+/*media queries*/
+
+/* TABLETS LANDSCAPE
+@media screen and (min-width: 48em)
+*/
+
+body {
+    background: fuchsia;
+}
+
+/* navigation menu */
+    a#to-menu {
+        display: none;
+    }
+    
+    .l-wrap {
+        position: relative;
+        min-width: 48em;
+        margin: auto;
+    }
+    
+    #nav {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background: none;
+    }
+    #nav ul {
+    }
+    #nav li {
+        display: inline-block;
+        background: #fff;
+    }
+    #nav li a {
+        display:inline-block;
+        margin-right:1em;
+        padding: 0 10px;
+        border: 1px solid #333;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+    }
+    
+    .service-links .to-top {
+        display: none;
+    }
+    
+/* search */
+.search input[type=submit] {
+    display: block;
+    background: none;
+    padding: 0;
+    border: 0;
+    width: 2em;
+    height: 2em;
+    text-indent: -99999em;
+    position: absolute;
+    top: 0;
+    right: 1em;
+    z-index: 1;
+}
+
+
+/* Footer */
+.service-links {
+	float: left;
+	margin-top: 0.9em;
+}
+.service-links li {
+	display: inline-block;
+}	
+.service-links li.tel a {
+	display: inline;	
+	color: #999;
+	border: 1px solid #444;
+	text-align: center;
+	padding: 0.3em 0.7em;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	-ms-border-radius: 0.5em;
+	border-radius: 0.5em;
+}
+
+
+/* LAPTOPS
+*/
+@media only screen and (min-width: 64em) {
+    body {
+        background: blue;
+    }
+}
+
+
+
+.btn {
+	display: inline-block;	
+}
+
+
+/************Structure**************/
+.logo {
+	margin: 0;
+	font-size: 1.6em;
+	position: relative;
+	z-index: 1;
+}
+.logo a {
+	display: block;
+	width: 120px;
+	height: auto;
+	padding: 0.6em 1em 0.4em 0.7em;
+}
+.logo img {
+	width: 120px;
+	height: auto;	
+}
+.nav-anchors {
+	display: none;
+}
+.search {
+    float: right;
+	border: 0;
+	padding: 0;
+	width: 10em;
+}
+
+
+.product-main {
+	padding-bottom: 2em;
+}
+.product-img {
+	float: left;
+	width: 50%;
+	height: auto;
+	margin-top: -4.8em;
+}
+.product-main > header {
+	padding-top: 1em;
+}
+.product-main > header, .product-desc, .product-form, .product-utils, .product-description {
+	padding-left: 2em;
+	margin-left: 50%;
+}
+
+/*Aux content*/
+.aux {
+	padding: 1em 0;
+}
+.aux header {
+	cursor: default;
+	padding: 0;
+	border: 0;
+	
+}
+.aux header a:after, .aux header a.open:after {
+	content: "";
+}
+[aria-hidden="true"] {
+	display: block;
+}
+.product-description header {
+	display: none;
+}
+
+
+
+@media screen and (min-width: 40.5em) and (max-width: 60em) {
+	.product-img {
+		width: 60%;
+	}
+	.product-main > header, .product-desc, .product-form, .product-utils, .product-description {
+		margin-left: 60%;
+		padding-left: 1em;
+	}
+}
+
+@media screen and (min-width: 60em) {
+	.product-img {
+		width: 67%;
+	}
+	.product-main > header, .product-desc, .product-form, .product-utils, .product-description {
+		padding-left: 2em;
+		margin-left: 67%;
+	}
+	.product-share {
+		margin: 0;
+		width: 19%;
+		float: left;
+	}
+	.img-container {
+		margin-left: 7em;
+	}
+	.product-img nav {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 6em;
+	}
+	.product-img nav li {
+		display: block;
+		margin: 0 0 1em;
+	}
+	.product-img nav img {
+		width: auto;
+	}
+	.submit-form input {
+		position: relative;
+		z-index: 1;
+	}
+	.product-utils {
+		position: relative;
+		z-index: 0;
+	}
+	.reviews-list > li {
+		padding: 2em 7em;
+	}
+}
+
+/* For IE 7, which doesn't support display: inline-block; */
+label, input,textarea, .nav-anchors li, .nav li, .price, .star, .star li, .product-img nav, .product-img nav li, .product-utils a, .reviews header h2, .footer li {
+	zoom: 1;
+	*display: inline;
+}

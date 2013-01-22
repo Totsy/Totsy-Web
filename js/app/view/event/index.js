@@ -4,9 +4,10 @@
 
 define(['app'], function(Totsy) {
     return Totsy.View.extend({
-        templateName: 'event-list',
+        templateName: 'event/index',
+        pageTitle: "Totsy ... for Moms",
         events: {
-            'click #events-live li a': "viewEvent"
+            'click ul.events > li > a': "navigateUrl"
         },
         getContext: function() {
             var ctx = this.data;
@@ -15,12 +16,6 @@ define(['app'], function(Totsy) {
             }
 
             return {'events': ctx};
-        },
-        viewEvent: function(e) {
-            alert("View Event");
-
-            e.preventDefault();
-            return false;
         }
     });
 });

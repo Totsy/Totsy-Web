@@ -31,24 +31,13 @@ define(function() {
     Handlebars.registerHelper('resourcelink', function(options) {
         for (i = 0; i < this.links.length; i++) {
             if (options.hash.rel == this.links[i].rel) {
-                return this.links[i].href;
+                var href = this.links[i].href;
+                if ('extract' in options.hash && 'uri' == options.hash.extract) {
+                    return href.substring(href.indexOf('/', 7));
+                }
+                return href;
             }
         }
-    });
-
-    Handlebars.registerHelper('iter', function(context, options) {
-        var fn = options.fn, inverse = options.inverse;
-        var ret = "";
-
-        if(context && context.length > 0) {
-            for(var i=0, j=context.length; i<j; i++) {
-                ret = ret + fn(_.extend({}, context[i], { idx: i }));
-            }
-        } else {
-            ret = inverse(this);
-        }
-
-        return ret;
     });
 
     Handlebars.registerHelper('priceformat', function(price) {
@@ -70,7 +59,7 @@ define(function() {
          * @var Backbone.Model
          */
         Model: Backbone.Model.extend({
-            resourceUrl: function(rel) {
+            getResourceUrl: function(rel) {
                 var links = this.get('links');
                 for (i = 0; i < links.length; i++) {
                     if (rel == links[i].rel) {
@@ -89,15 +78,29 @@ define(function() {
         View: Backbone.View.extend({
             templateName: '',
             data: null,
-            el: document.getElementById('mainContent'),
+            el: document.getElementById('content'),
+            preRender: function() {},
             render: function() {
                 if (this.data && this.templateName) {
                     var tmpl = getTemplate(this.templateName);
+                    this.preRender();
                     this.el.innerHTML = tmpl(this.getContext());
                 }
             },
             getContext: function() {
                 return {};
+            },
+            getPageTitle: function() {
+                if (this.pageTitle) {
+                    return this.pageTitle;
+                }
+
+                return '';
+            },
+            navigateUrl: function(e) {
+                e.preventDefault();
+
+                window.router.navigate(e.currentTarget.getAttribute('href'), { trigger: true });
             }
         }),
 
@@ -107,7 +110,7 @@ define(function() {
         init: function() {
             $.ajaxSetup({
                 headers: {
-                    Authorization: 'Basic dGhhcnNhbjp0aGFyc2FuMTIz'
+                    Authorization: 'Basic dGhhcnNhbjpiaHV2YW5lbmRyYW44'
                 }
             });
         }

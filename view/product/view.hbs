@@ -1,0 +1,79 @@
+<section class="product-main content-well">
+    <header>
+        <h2 class="product-name">{{event.name}} / {{product.name}}</h2>
+        <span class="count-down-timer"><span id="timer"><span class="prefix">Sale Ends:</span> 2 Days, 21 Hours</span></span>
+    </header>
+{{#with product}}
+    <div id="product-img" class="product-img">
+        <figure class="img-container" id="img-container">
+            <img src="{{image.[0]}}" alt="{{name}}" />
+        </figure>
+        <nav>
+            <ul>
+{{#each product.image}}
+                <li><a href="{{resourcelink rel="self" extract="uri"}}"><img src="{{this}}" alt="{{../name}}" /></a></li>
+{{/each}}
+            </ul>
+        </nav>
+    </div><!--end .product-img-->
+        <div class="product-overview">
+            <div class="price-now"><span>Now</span>${{priceformat price.price}}</div>
+            <ul class="price-grid">
+                <li class="price-was"><span>Was</span>${{priceformat price.orig}}</li>
+                <li class="price-discount">15% Discount</li>
+                <li class="price-savings">$15 Savings</li>
+            </ul>
+        </div>
+    <form method="post" action="#" id="product-form" class="product-form">
+        <fieldset>
+            <legend>Add to Cart</legend>
+{{#if attributes.Size}}
+            <div class="field size-field">
+                <label for="size">Size</label>
+                <select id="size" name="size">
+{{#each attributes.Size}}
+                    <option value="{{this}}">{{this}}</option>
+{{/each}}
+                </select>
+            </div>
+{{/if}}
+{{#if attributes.Color}}
+            <div class="field color-field">
+                <label for="size">Color</label>
+                <select id="color" name="color">
+{{#each attributes.Color}}
+                    <option value="{{this}}">{{this}}</option>
+{{/each}}
+                </select>
+            </div>
+{{/if}}
+            <div class="field qty-field">
+                <label for="qty">Qty</label>
+                <input name="qty" id="qty" class="qty" type="number" pattern="[0-9]*" value="1" min="1" max="999" />
+            </div>
+            <div class="submit-form">
+                <input type="submit" class="btn" value="Add to Cart" />
+            </div>
+        </fieldset>
+    </form><!--end #product-form-->
+    <div class="product-utils">
+        <a href="#" class="share-btn">Share</a>
+        <a href="#" class="find-nearby">Find Similar Products</a>
+    </div>
+    <div class="product-description">{{description}}</div><!--end .product-description-->
+</section><!--end .product-main-->
+<section class="aux product-shipping" id="product-shipping">
+    <header id="tab-shipping">
+        <a href="shipping.html">
+            <h3>Shipping:</h3>
+        </a>
+    </header>
+</section><!--end .terms-shipping-->
+<section class="aux product-returns" id="product-returns">
+    <header id="tab-returns">
+        <a href="returns.html">
+            <h3>Returns:</h3>
+        </a>
+    </header>
+</section><!--end .terms-returns-->
+{{/with}}

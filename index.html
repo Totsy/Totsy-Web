@@ -1,103 +1,78 @@
-<html>
-  <head>
-    <title>Totsy | buy some great stuff!</title>
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-<div id="stickywrap">
-  <header class="navbar navbar-fixed-top">
-    <!-- begin masthead -->
-    <div id="masthead">
-        <div class="container row">   
-            <h1 id="logo" class="span2"><a href="http://www.totsy.com/event/?ref=logo/" title="Totsy"><img src="http://www.totsy.com/skin/frontend/enterprise/bootstrap/images/logo.png" alt="Totsy" width="85px"></a></h1>
-            <ul id="userUtils" class="span4 offset6">
-                <li id="userAccount" class="dropdown">
-                    <a href="/customer/account/#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/customer/account/">Account Dashboard</a></li>
-                        <li><a href="/customer/account/edit/">Account Information</a></li>
-                        <li><a href="/paymentfactory/">Manage Credit Cards</a></li>
-                        <li><a href="/customer/account/edit/changepassword/1/">Change Password</a></li>
-                        <li><a href="/customer/address/">Address Book</a></li>
-                        <li><a href="/sales/order/history/">My Orders</a></li>
-                        <li><a href="/reward/customer/info/">My Credits</a></li>
-                        <li><a href="/invitation/">My Invitations</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/customer/account/logout">Logout</a></li>
-                    </ul>
-                </li>
-                <li class="quick-access" id="header-user-info">
-                    <div id="usercart">
-                        <div class="top-cart dropdown">
-                            <div id="usercart-block-title" class="block-title no-items">
-                                <strong id="cartHeader" class="cartempty"><span>You have no items in your shopping cart.</span></strong>
-                            </div>
-                            <div id="topCartContent" class="block-content dropdown-menu" data-item-added="false">
-                              <div class="inner-wrapper">        
-                                <div id="items-info-wrapper">
-                                    <p class="cart-empty">You have zero items in your cart.</p>
-                                </div><!-- /.inner-wrapper -->
-                              </div><!-- /#topCartContent -->
-                            </div><!--/{CART_SIDEBAR_a29d58b9baeef47d3798e0a0cf94fceb}-->
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div><!--/#masthead -->
-    <!-- begin nav -->
-    <nav>
-        <div class="container row">
-            <ul class="nav span8">
-                <li id="navAllEvents" class="dropdown">
-                    <a href="http://www.totsy.com/event/"><em>ALL <br>SALES</em></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="http://www.totsy.com/event/">New </a></li>
-                        <li><a href="http://www.totsy.com/event#events-upcoming">Upcoming</a></li>
-                    </ul>
-                </li>
-                <li id="navByCat" class="dropdown navShop">
-                    <a href="#"><em>SHOP BY<br>CATEGORY</em></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="http://www.totsy.com/category/" title=""></a></li>
-                        <li><a href="http://www.totsy.com/category/boys-apparel" title="Boys Apparel">Boys Apparel</a></li>
-                        <li><a href="http://www.totsy.com/category/girls-apparel" title="Girls Apparel">Girls Apparel</a></li>
-                        <li><a href="http://www.totsy.com/category/shoes" title="Shoes">Shoes</a></li>
-                        <li><a href="http://www.totsy.com/category/accessories" title="Accessories">Accessories</a></li>
-                        <li><a href="http://www.totsy.com/category/toys-books" title="Toys and Books">Toys and Books</a></li>
-                        <li><a href="http://www.totsy.com/category/home" title="Home">Home</a></li>
-                        <li><a href="http://www.totsy.com/category/gear" title="Gear">Gear</a></li>
-                        <li><a href="http://www.totsy.com/category/moms-dads" title="Moms and Dads">Moms and Dads</a></li>
-                    </ul>        
-                </li>
-                <li id="navByAge" class="dropdown navShop">
-                    <a href="#"><em>SHOP BY<br>AGE</em></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="http://www.totsy.com/age/" title=""></a></li>
-                        <li><a href="http://www.totsy.com/age/newborn" title="Newborn 0-6M">Newborn 0-6M</a></li>
-                        <li><a href="http://www.totsy.com/age/infant" title="Infant 6-24M">Infant 6-24M</a></li>
-                        <li><a href="http://www.totsy.com/age/toddler" title="Toddler 1-3Y">Toddler 1-3Y</a></li>
-                        <li><a href="http://www.totsy.com/age/preschool" title="Preschool 3-4Y">Preschool 3-4Y</a></li>
-                        <li><a href="http://www.totsy.com/age/school" title="School Age 5+">School Age 5+</a></li>
-                        <li><a href="http://www.totsy.com/age/adult" title="Adult">Adult</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="span2 offset2" id="header-checkoutBtn">
-                <a class="btn checkout btn-primary" title="Checkout" href="http://www.totsy.com/checkout/cart/"><strong>Checkout</strong></a>
-            </div>
-        </div>
-    </nav>
-  </header><!-- /.navbar -->
-  <div id="mainContent" class="container l-1col">
+<!doctype html>
+<html class="no-js">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="HandheldFriendly" content="true">
+    
+    <!-- The absense of a media query IS the first media query… all browsers get "mobile-first" style.css, go up from there -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen, handheld" />
+    <link rel="stylesheet" type="text/css" href="/css/enhanced.css" media="screen  and (min-width: 48em)" />
+    <link rel="stylesheet" type="text/css" href="/css/fontello.css" media="screen, handheld" />
 
-  </div><!-- /.catalog-events-container --><!--/{EVENT_INDEX_INDEX_d935d680976ffc4c66acaa9fe9bd937b}-->                        
-</div>
+    <!-- Kick IE in the pants -->
+    <!--[if (lt IE 9)&(!IEMobile)]>
+    <link rel="stylesheet" type="text/css" href="css/enhanced.css" />
+    <![endif]-->
+    <!--<script type="text/javascript" src="js/modernizr.js"></script>-->
+    <!-- alternatively, just use html5shim for lt IE 9 http://html5shim.googlecode.com/svn/trunk/html5.js -->
+
+</head>
+<body id="page" class="">
+    <header id="masthead" role="banner">
+        <div id="promo">special offers and messages here</div>
+        <div class="l-wrap">
+            <h1 class="logo"><a href="#"><img src="http://totsy.com/skin/frontend/enterprise/bootstrap/images/logo.png" alt="Totsy" /></a></h1>
+            <nav id="nav-utils">
+                <ul  id="nav-anchors" class="nav-btns">
+                    <li><a href="#nav-primary" id="to-menu" class="icon-menu icon"><em class="verbose">Menu</em></a></li>
+                    <li><a href="#search" id="to-search" class="icon-search icon"><em class="verbose">Search</em></a></li>
+                </ul>
+                <ul id="nav-user" class="nav-btns">
+                    <li><a href="#" class="icon-user icon"><em class="verbose">My Account</em></a></li>
+                    <li><a href="#" class="icon-cart icon"><em class="verbose">Checkout</em> <span class="cart-items-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content" role="main" id="content"></div>
+
+    <nav id="nav-primary" class="nav nav-menu">
+        <ul role="navigation">
+            <li><a href="#">All Sales</a></li>
+            <li><a href="#">Shop By Category</a></li>
+            <li><a href="#">Shop By Age</a></li>
+        </ul>
+        <form id="search" action="#" method="post" class="search reveal">
+            <fieldset>
+                <legend>Search the Site</legend>
+                <label for="search-site">Search the site</label>
+                <input type="search" id="search-site" placeholder="Search Totsy" results="5" />
+                <input type="submit" value="Go" />
+            </fieldset>
+        </form>
+    </nav>
+    
+    <footer class="footer" role="contentinfo">
+        <div class="l-wrap">
+            <ul class="service-links">
+                <li class="tel" ><a href="tel:+1-888-247-9444" title="Call Totsy Customer Support">Call 888-247-9444</a></li>
+                <li><a href="#">Contact Us</a></span></li>
+                <li><a href="#">About Us</a></span></li>
+                <li class="to-top"><a href="#masthead">Top</a></li>
+            </ul>
+            <small>&copy;2013 Totsy.com. All Rights Reserved.</small>
+        </div>
+    </footer><!-- /footer-->
+
+    <!-- All JS in the footer -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.0.6/require.min.js" data-main="js/main.js"></script>
-  </body>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.0.6/require.min.js" data-main="/js/main.js"></script>
+
+</body>
 </html>

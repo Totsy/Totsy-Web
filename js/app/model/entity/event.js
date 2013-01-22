@@ -2,7 +2,7 @@
  * app/model/entity/event.js
  */
 
-define(['app'], function(Totsy) {
+define(['app', 'app/model/collection/product'], function(Totsy) {
     return Totsy.Model.extend({
         url: Totsy.apiBaseUrl + '/event'
     });
